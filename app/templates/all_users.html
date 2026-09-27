@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="users-container">
+
+    <h1>👥 FitBuddy - All Users & Workout Plans</h1>
+
+    {% if users %}
+
+    <div class="table-wrapper">
+
+        <table>
+
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Age</th>
+                    <th>Weight</th>
+                    <th>Goal</th>
+                    <th>Intensity</th>
+                    <th>Original Plan</th>
+                    <th>Updated Plan</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                {% for user in users %}
+
+                <tr>
+                    <td>{{ user["id"] }}</td>
+
+                    <td>{{ user["name"] }}</td>
+
+                    <td>{{ user["age"] }}</td>
+
+                    <td>{{ user["weight"] }} kg</td>
+
+                    <td>{{ user["goal"] }}</td>
+
+                    <td>{{ user["intensity"] }}</td>
+
+                    <td>
+                        <div class="plan-text">
+                            {{ user["original_plan"] }}
+                        </div>
+                    </td>
+
+                    <td>
+                        <div class="plan-text">
+                            {{ user["updated_plan"] or "No feedback update yet" }}
+                        </div>
+                    </td>
+                </tr>
+
+                {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+    {% else %}
+
+    <div class="empty-message">
+        No users found.
+    </div>
+
+    {% endif %}
+
+</div>
+
+{% endblock %}

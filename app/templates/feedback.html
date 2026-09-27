@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="page-container">
+
+    <div class="feedback-card">
+
+        <h1>📝 Feedback</h1>
+
+        <p class="subtitle">
+            Help us improve your personalized fitness plan.
+        </p>
+
+        {% if success %}
+        <div class="success-message">
+            ✅ Your plan has been updated based on your feedback!
+        </div>
+        {% endif %}
+
+        <form action="/feedback" method="post">
+
+            <label for="user_id">User ID</label>
+
+            <input
+                type="text"
+                id="user_id"
+                name="user_id"
+                placeholder="Enter the same User ID used to generate your plan"
+                required
+            >
+
+            <label for="feedback">Your Feedback</label>
+
+            <textarea
+                id="feedback"
+                name="feedback"
+                rows="6"
+                placeholder="Let us know how we can improve your plan..."
+                required
+            ></textarea>
+
+            <button type="submit">
+                Submit Feedback
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,110 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="result-container">
+
+    <!-- USER DETAILS -->
+    <div class="user-card">
+        <h2>Personalized Workout Plan</h2>
+
+        <div class="user-info">
+            <p><strong>Name:</strong> {{ name }}</p>
+            <p><strong>User ID:</strong> {{ user_id }}</p>
+            <p><strong>Age:</strong> {{ age }}</p>
+            <p><strong>Weight:</strong> {{ weight }} kg</p>
+            <p><strong>Goal:</strong> {{ goal }}</p>
+            <p><strong>Intensity:</strong> {{ intensity }}</p>
+        </div>
+    </div>
+
+
+    <!-- DESCRIPTION -->
+    <div class="description-box">
+        <h3>Description</h3>
+
+        <p>
+            Once the user submits their details, the application navigates
+            to a personalized workout plan page. This section displays
+            a summary of the user's input including their Name, User ID,
+            Age, Weight, Fitness Goal, and Selected Intensity.
+        </p>
+
+        <p>
+            The personalized plan is generated based on the user's
+            fitness requirements and selected workout intensity.
+        </p>
+    </div>
+
+
+    <!-- WORKOUT PLAN -->
+    <div class="workout-card">
+
+        <h2>🏋️ Workout Plan</h2>
+
+        <pre>{{ workout_plan }}</pre>
+
+    </div>
+
+
+    <!-- FEEDBACK SECTION -->
+    <div class="feedback-container">
+
+        <h2>📝 Feedback</h2>
+
+        <p>
+            Help us improve your personalized fitness plan.
+        </p>
+
+        <form action="/feedback" method="post">
+
+            <label for="feedback_user_id">
+                User ID
+            </label>
+
+            <input
+                type="text"
+                id="feedback_user_id"
+                name="user_id"
+                value="{{ user_id }}"
+                readonly
+                required
+            >
+
+            <label for="feedback">
+                Your Feedback
+            </label>
+
+            <textarea
+                id="feedback"
+                name="feedback"
+                rows="6"
+                placeholder="Let us know how we can improve your plan..."
+                required
+            ></textarea>
+
+            <button type="submit">
+                Submit Feedback
+            </button>
+
+        </form>
+
+    </div>
+
+
+    <!-- NAVIGATION BUTTONS -->
+    <div class="actions">
+
+        <a href="/" class="button">
+            Generate Another Plan
+        </a>
+
+        <a href="/all-users" class="button secondary">
+            View All Users
+        </a>
+
+    </div>
+
+</div>
+
+{% endblock %}
